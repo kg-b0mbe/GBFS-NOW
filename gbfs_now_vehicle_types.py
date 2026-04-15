@@ -1,6 +1,6 @@
 import requests, json, os
 from qgis.core import *
-from qgis.PyQt.QtCore import QVariant, Qt, QAbstractTableModel, QUrl
+from qgis.PyQt.QtCore import Qt, QAbstractTableModel, QUrl
 from qgis.PyQt.QtGui import QIcon, QPixmap
 
 from qgis.PyQt.QtNetwork import QNetworkAccessManager, QNetworkRequest,QNetworkReply

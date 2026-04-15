@@ -4,9 +4,9 @@ import pandas as pd
 
 from qgis.core import *
 from qgis.PyQt import QtGui, QtWidgets, uic
-from qgis.PyQt.QtCore import pyqtSignal
-from qgis.PyQt.QtCore import QVariant
-from qgis.PyQt.QtCore import QSortFilterProxyModel
+from qgis.PyQt.QtCore import pyqtSignal, QSortFilterProxyModel
+
+from .compat import DIALOG_ACCEPTED
 
 from . import table_model
 
@@ -43,10 +43,12 @@ class gbfs_now_search_Dialog(QtWidgets.QDialog):
             contents = []
         else:
             contents = df.values.tolist()
-    
-        
+
+        # カラム名はCSVから動的に取得する（ハードコードしない）
+        columns = df.columns.tolist()
+
         #TableView更新
-        model = table_model.createTableModel(df.values.tolist(), ["Country Code","Name","Location","System ID","URL","Auto-Discovery URL","Supported Versions","Authentication Info"])
+        model = table_model.createTableModel(df.values.tolist(), columns)
         #self.gbfs_list.setModel(model)
         
         self.proxy_model = QSortFilterProxyModel()
@@ -69,4 +71,4 @@ class gbfs_now_search_Dialog(QtWidgets.QDialog):
             row_num  = self.gbfs_list.selectionModel().selectedRows()[0].row()
             gbfs_url = self.gbfs_list.model().index(row_num,5).data()
             
-        return (gbfs_url, result == QtWidgets.QDialog.Accepted)
+        return (gbfs_url, result == DIALOG_ACCEPTED)

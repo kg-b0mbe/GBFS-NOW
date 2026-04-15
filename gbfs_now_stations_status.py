@@ -1,7 +1,7 @@
 import os,requests, json ,datetime
 
 from qgis.core import *
-from qgis.PyQt.QtCore import QVariant
+from .compat import FIELD_STRING, FIELD_INT, FIELD_BOOL
 
 STATION_PNG_PATH = os.path.join(os.path.dirname(__file__),  "station_now.png")
 
@@ -23,15 +23,15 @@ def create_gbfs_station_now_layer(self,url):
     
     #カラムを作成        
     layer.dataProvider().addAttributes( [
-        QgsField('station_id'            , QVariant.String), 
-        QgsField('name'                  , QVariant.String), 
-        QgsField('capacity'              , QVariant.Int), 
-        QgsField('num_bikes_available'   , QVariant.Int),
-        QgsField('num_docks_available'   , QVariant.Int),
-        QgsField('num_bikes_disabled'    , QVariant.Int),
-        QgsField('is_renting'            , QVariant.Bool),
-        QgsField('is_returning'          , QVariant.Bool),
-        QgsField('last_reported'         , QVariant.String)
+        QgsField('station_id'            , FIELD_STRING), 
+        QgsField('name'                  , FIELD_STRING), 
+        QgsField('capacity'              , FIELD_INT), 
+        QgsField('num_bikes_available'   , FIELD_INT),
+        QgsField('num_docks_available'   , FIELD_INT),
+        QgsField('num_bikes_disabled'    , FIELD_INT),
+        QgsField('is_renting'            , FIELD_BOOL),
+        QgsField('is_returning'          , FIELD_BOOL),
+        QgsField('last_reported'         , FIELD_STRING)
         ] )
     
     
@@ -102,15 +102,15 @@ def create_gbfs_station_now_layer_jp(self,url):
     
     #カラムを作成        
     layer.dataProvider().addAttributes( [
-        QgsField('ステーションID'            , QVariant.String), 
-        QgsField('ステーション名'                  , QVariant.String), 
-        QgsField('最大駐輪可能台数（ラック数）'              , QVariant.Int), 
-        QgsField('貸出可能台数'   , QVariant.Int),
-        QgsField('返却可能台数'   , QVariant.Int),
-        QgsField('駐輪不可ラック数'    , QVariant.Int),
-        QgsField('貸出可能時間'            , QVariant.Bool),
-        QgsField('返却可能時間'          , QVariant.Bool),
-        QgsField('データ更新時間'         , QVariant.String)
+        QgsField('ステーションID'            , FIELD_STRING), 
+        QgsField('ステーション名'                  , FIELD_STRING), 
+        QgsField('最大駐輪可能台数（ラック数）'              , FIELD_INT), 
+        QgsField('貸出可能台数'   , FIELD_INT),
+        QgsField('返却可能台数'   , FIELD_INT),
+        QgsField('駐輪不可ラック数'    , FIELD_INT),
+        QgsField('貸出可能時間'            , FIELD_BOOL),
+        QgsField('返却可能時間'          , FIELD_BOOL),
+        QgsField('データ更新時間'         , FIELD_STRING)
         ] )
     
     

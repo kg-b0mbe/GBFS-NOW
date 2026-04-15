@@ -1,7 +1,7 @@
 import os, requests, json
 
 from qgis.core import *
-from qgis.PyQt.QtCore import QVariant
+from .compat import FIELD_STRING, FIELD_DOUBLE, FIELD_BOOL
 BIKE_PNG_PATH = os.path.join(os.path.dirname(__file__),  "bike.png")
 
 
@@ -25,23 +25,23 @@ def create_gbfs_free_bike_layer(self,url):
     
     #カラムを作成        
     layer.dataProvider().addAttributes( [
-        QgsField('bike_id'               , QVariant.String), 
-        QgsField('is_reserved'           , QVariant.Bool), 
-        QgsField('is_disabled'           , QVariant.Bool), 
-        QgsField('vehicle_type_id'       , QVariant.String), 
-        QgsField('last_reported'         , QVariant.String), 
-        QgsField('current_range_meters'  , QVariant.String), 
-        QgsField('current_fuel_percent'  , QVariant.String), 
-        QgsField('station_id'            , QVariant.String), 
-        QgsField('home_station_id'       , QVariant.String), 
-        QgsField('pricing_plan_id'       , QVariant.String), 
-        QgsField('vehicle_equipment'     , QVariant.String), 
-        QgsField('available_until'       , QVariant.String),
-        QgsField('android'               , QVariant.String), 
-        QgsField('ios '                  , QVariant.String), 
-        QgsField('web'                   , QVariant.String),  
-        QgsField('lon'                   , QVariant.Double), 
-        QgsField('lat'                   , QVariant.Double) 
+        QgsField('bike_id'               , FIELD_STRING), 
+        QgsField('is_reserved'           , FIELD_BOOL), 
+        QgsField('is_disabled'           , FIELD_BOOL), 
+        QgsField('vehicle_type_id'       , FIELD_STRING), 
+        QgsField('last_reported'         , FIELD_STRING), 
+        QgsField('current_range_meters'  , FIELD_STRING), 
+        QgsField('current_fuel_percent'  , FIELD_STRING), 
+        QgsField('station_id'            , FIELD_STRING), 
+        QgsField('home_station_id'       , FIELD_STRING), 
+        QgsField('pricing_plan_id'       , FIELD_STRING), 
+        QgsField('vehicle_equipment'     , FIELD_STRING), 
+        QgsField('available_until'       , FIELD_STRING),
+        QgsField('android'               , FIELD_STRING), 
+        QgsField('ios '                  , FIELD_STRING), 
+        QgsField('web'                   , FIELD_STRING),  
+        QgsField('lon'                   , FIELD_DOUBLE), 
+        QgsField('lat'                   , FIELD_DOUBLE) 
         ] )
     
     
@@ -108,23 +108,23 @@ def create_gbfs_free_bike_layer_jp(self,url):
     
     #カラムを作成        
     layer.dataProvider().addAttributes( [
-        QgsField('車両ID'                     , QVariant.String), 
-        QgsField('予約状況（True:予約中）'    , QVariant.Bool), 
-        QgsField('車両利用可否(True:利用不可)', QVariant.Bool), 
-        QgsField('車種ID'                     , QVariant.String), 
-        QgsField('ステータス最終取得時間'     , QVariant.String), 
-        QgsField('残走行可能距離(m)'          , QVariant.String), 
-        QgsField('残燃料(%)'                  , QVariant.String), 
-        QgsField('ステーションID'             , QVariant.String), 
-        QgsField('ホームステーションID'       , QVariant.String), 
-        QgsField('料金プランID'               , QVariant.String), 
-        QgsField('車両装備'                   , QVariant.String), 
-        QgsField('車両返却期限'               , QVariant.String),
-        QgsField('android'                    , QVariant.String), 
-        QgsField('ios '                       , QVariant.String), 
-        QgsField('web'                        , QVariant.String),  
-        QgsField('lon'                        , QVariant.Double), 
-        QgsField('lat'                        , QVariant.Double) 
+        QgsField('車両ID'                     , FIELD_STRING), 
+        QgsField('予約状況（True:予約中）'    , FIELD_BOOL), 
+        QgsField('車両利用可否(True:利用不可)', FIELD_BOOL), 
+        QgsField('車種ID'                     , FIELD_STRING), 
+        QgsField('ステータス最終取得時間'     , FIELD_STRING), 
+        QgsField('残走行可能距離(m)'          , FIELD_STRING), 
+        QgsField('残燃料(%)'                  , FIELD_STRING), 
+        QgsField('ステーションID'             , FIELD_STRING), 
+        QgsField('ホームステーションID'       , FIELD_STRING), 
+        QgsField('料金プランID'               , FIELD_STRING), 
+        QgsField('車両装備'                   , FIELD_STRING), 
+        QgsField('車両返却期限'               , FIELD_STRING),
+        QgsField('android'                    , FIELD_STRING), 
+        QgsField('ios '                       , FIELD_STRING), 
+        QgsField('web'                        , FIELD_STRING),  
+        QgsField('lon'                        , FIELD_DOUBLE), 
+        QgsField('lat'                        , FIELD_DOUBLE) 
         ] )
     
     

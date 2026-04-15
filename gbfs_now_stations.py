@@ -1,7 +1,7 @@
 import os, requests, json
 
 from qgis.core import *
-from qgis.PyQt.QtCore import QVariant
+from .compat import FIELD_STRING, FIELD_INT, FIELD_DOUBLE, FIELD_BOOL
 STATION_PNG_PATH = os.path.join(os.path.dirname(__file__),  "station.png")
 
 
@@ -25,29 +25,29 @@ def create_gbfs_station_layer(self,url):
     
     #カラムを作成        
     layer.dataProvider().addAttributes( [
-        QgsField('station_id'            , QVariant.String), 
-        QgsField('name'                  , QVariant.String), 
-        QgsField('short_name'            , QVariant.String), 
-        QgsField('capacity'              , QVariant.Int), 
-        QgsField('address'               , QVariant.String), 
-        QgsField('cross_street'          , QVariant.String), 
-        QgsField('region_id'             , QVariant.String), 
-        QgsField('post_code'             , QVariant.String), 
-        QgsField('rental_methods'        , QVariant.String), 
-        QgsField('is_virtual_station'    , QVariant.Bool),   
-        #QgsField('station_area'          , QVariant.String), 
-        QgsField('parking_type'          , QVariant.String), 
-        QgsField('parking_hoop'          , QVariant.Bool),   
-        QgsField('contact_phone '        , QVariant.String), 
-        #QgsField('vehicle_capacity'      , QVariant.String), 
-        QgsField('vehicle_type_capacity' , QVariant.String), 
-        QgsField('is_valet_station'      , QVariant.Bool),   
-        QgsField('is_charging_station'   , QVariant.Bool), 
-        QgsField('android'               , QVariant.String), 
-        QgsField('ios '                  , QVariant.String), 
-        QgsField('web'                   , QVariant.String),  
-        QgsField('lon'                   , QVariant.Double), 
-        QgsField('lat'                   , QVariant.Double) 
+        QgsField('station_id'            , FIELD_STRING), 
+        QgsField('name'                  , FIELD_STRING), 
+        QgsField('short_name'            , FIELD_STRING), 
+        QgsField('capacity'              , FIELD_INT), 
+        QgsField('address'               , FIELD_STRING), 
+        QgsField('cross_street'          , FIELD_STRING), 
+        QgsField('region_id'             , FIELD_STRING), 
+        QgsField('post_code'             , FIELD_STRING), 
+        QgsField('rental_methods'        , FIELD_STRING), 
+        QgsField('is_virtual_station'    , FIELD_BOOL),   
+        #QgsField('station_area'          , FIELD_STRING), 
+        QgsField('parking_type'          , FIELD_STRING), 
+        QgsField('parking_hoop'          , FIELD_BOOL),   
+        QgsField('contact_phone '        , FIELD_STRING), 
+        #QgsField('vehicle_capacity'      , FIELD_STRING), 
+        QgsField('vehicle_type_capacity' , FIELD_STRING), 
+        QgsField('is_valet_station'      , FIELD_BOOL),   
+        QgsField('is_charging_station'   , FIELD_BOOL), 
+        QgsField('android'               , FIELD_STRING), 
+        QgsField('ios '                  , FIELD_STRING), 
+        QgsField('web'                   , FIELD_STRING),  
+        QgsField('lon'                   , FIELD_DOUBLE), 
+        QgsField('lat'                   , FIELD_DOUBLE) 
         ] )
     
     
@@ -119,29 +119,29 @@ def create_gbfs_station_layer_jp(self,url):
     
     #カラムを作成        
     layer.dataProvider().addAttributes( [
-        QgsField('ステーションID'            , QVariant.String), 
-        QgsField('ステーション名'                  , QVariant.String), 
-        QgsField('ステーション名_略称'            , QVariant.String), 
-        QgsField('最大駐輪可能台数（ラック数）'              , QVariant.String),
-        QgsField('住所'               , QVariant.String), 
-        QgsField('道路・交差点名称'          , QVariant.String), 
-        QgsField('リージョンID'             , QVariant.String), 
-        QgsField('郵便番号'             , QVariant.String), 
-        QgsField('決済方法'        , QVariant.String),   
-        QgsField('仮想ステーションフラグ'    , QVariant.Bool), 
-        #QgsField('仮想ステーション領域'          , QVariant.String), 
-        QgsField('駐輪場種別'          , QVariant.String), 
-        QgsField('駐輪フープフラグ'          , QVariant.Bool), 
-        QgsField('電話番号'        , QVariant.String),  
-        #QgsField('vehicle_capacity'      , QVariant.String), 
-        QgsField('vehicle_type_capacity' , QVariant.String), 
-        QgsField('係員フラグ'      , QVariant.String), 
-        QgsField('チャージャーステーションフラグ'   , QVariant.Bool), 
-        QgsField('android-uri'               , QVariant.String), 
-        QgsField('ios-uri'                  , QVariant.String), 
-        QgsField('web-uri'                   , QVariant.String),
-        QgsField('lon'                   , QVariant.Double), 
-        QgsField('lat'                   , QVariant.Double) 
+        QgsField('ステーションID'            , FIELD_STRING), 
+        QgsField('ステーション名'                  , FIELD_STRING), 
+        QgsField('ステーション名_略称'            , FIELD_STRING), 
+        QgsField('最大駐輪可能台数（ラック数）'              , FIELD_STRING),
+        QgsField('住所'               , FIELD_STRING), 
+        QgsField('道路・交差点名称'          , FIELD_STRING), 
+        QgsField('リージョンID'             , FIELD_STRING), 
+        QgsField('郵便番号'             , FIELD_STRING), 
+        QgsField('決済方法'        , FIELD_STRING),   
+        QgsField('仮想ステーションフラグ'    , FIELD_BOOL), 
+        #QgsField('仮想ステーション領域'          , FIELD_STRING), 
+        QgsField('駐輪場種別'          , FIELD_STRING), 
+        QgsField('駐輪フープフラグ'          , FIELD_BOOL), 
+        QgsField('電話番号'        , FIELD_STRING),  
+        #QgsField('vehicle_capacity'      , FIELD_STRING), 
+        QgsField('vehicle_type_capacity' , FIELD_STRING), 
+        QgsField('係員フラグ'      , FIELD_STRING), 
+        QgsField('チャージャーステーションフラグ'   , FIELD_BOOL), 
+        QgsField('android-uri'               , FIELD_STRING), 
+        QgsField('ios-uri'                  , FIELD_STRING), 
+        QgsField('web-uri'                   , FIELD_STRING),
+        QgsField('lon'                   , FIELD_DOUBLE), 
+        QgsField('lat'                   , FIELD_DOUBLE) 
         ] )
     
     
